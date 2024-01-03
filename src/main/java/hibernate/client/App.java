@@ -13,12 +13,12 @@ public class App {
 
 	public static void main(String[] args) {
 		
-		Employee em = new Employee();
+		Employee emp = new Employee();
 		
 //		em.setId(9);w
-		em.setName("Abhinav");
-		em.setGender("Male");
-		em.setSalary(41000);
+		emp.setName("Abhinav");
+		emp.setGender("Male");
+		emp.setSalary(41000);
 		
 		ServiceRegistry ssr = new StandardServiceRegistryBuilder().configure().build();
 		Metadata data = new MetadataSources(ssr).getMetadataBuilder().build();
@@ -28,7 +28,7 @@ public class App {
 		Session ss = sf.openSession();
 		Transaction tn = ss.beginTransaction();
 		
-		ss.save(em);
+		ss.save(emp);
 		
 //		em = ss.load(Employee.class, 1); 
 //		System.out.println(em);
