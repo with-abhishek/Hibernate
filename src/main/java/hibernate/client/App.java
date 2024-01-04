@@ -38,11 +38,18 @@ public class App {
 		
 //		From Clause
 		
-		String hql ="from Employee";
-		Query q = ss.createQuery(hql);
-		List list = q.list();	
-		System.out.println(list);
+//		String hql ="from Employee";
+//		Query q = ss.createQuery(hql);
+//		List list = q.list();	
+//		System.out.println(list);
 		
+//		Delete Clause
+		
+		String hql ="delete from Employee where id=:id";
+		Query q = ss.createQuery(hql);
+		q.setParameter("id", 20);
+		int res=q.executeUpdate();
+		System.out.println(res);
 		
 		
 		
