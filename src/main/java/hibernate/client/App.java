@@ -54,16 +54,12 @@ public class App {
 
 //		Update Clause
 		
-		String hql ="update Employee set salary=:sal where id=:id";
-		Query q = ss.createQuery(hql);
-		q.setParameter("sal", 31200);
-		q.setParameter("id", 5);
-		int res=q.executeUpdate();
-		System.out.println(res);
-		
-		
-		
-		
+//		String hql ="update Employee set salary=:sal where id=:id";
+//		Query q = ss.createQuery(hql);
+//		q.setParameter("sal", 31200);
+//		q.setParameter("id", 5);
+//		int res=q.executeUpdate();
+//		System.out.println(res);
 		
 //		ss.save(emp);
 		tx.commit();
