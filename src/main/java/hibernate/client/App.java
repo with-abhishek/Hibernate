@@ -2,28 +2,37 @@ package hibernate.client;
 import hibernate.entity.Employee;
 import hibernate.util.config;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		Employee emp = new Employee();
-		
-		
-//		emp.setId(1);
-		emp.setName("Tiger");
-		emp.setGender("Male");
-		emp.setSalary(30000);
+//		Employee emp = new Employee();
+	
 		
 		SessionFactory sf = config.getSessionFactory();
 		Session ss = sf.openSession();
 		Transaction tx = ss.beginTransaction();
 		
-		ss.save(emp);
-		tx.commit();
+//		Aggregate Method
+		
+		String hql ="from Employee where id=1";
+		Query q = ss.createQuery(hql);
+		
+		List list = q.list();	
+		System.out.println(list);
+		
+		
+		
+		
+//		ss.save(emp);
+//		tx.commit();
 		
 	}
 
