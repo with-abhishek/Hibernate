@@ -45,9 +45,19 @@ public class App {
 		
 //		Delete Clause
 		
-		String hql ="delete from Employee where id=:id";
+//		String hql ="delete from Employee where id=:id";
+//		Query q = ss.createQuery(hql);
+//		q.setParameter("id", 20);
+//		int res=q.executeUpdate();
+//		System.out.println(res);
+//		
+
+//		Update Clause
+		
+		String hql ="update Employee set salary=:sal where id=:id";
 		Query q = ss.createQuery(hql);
-		q.setParameter("id", 20);
+		q.setParameter("sal", 31200);
+		q.setParameter("id", 5);
 		int res=q.executeUpdate();
 		System.out.println(res);
 		
@@ -56,7 +66,7 @@ public class App {
 		
 		
 //		ss.save(emp);
-//		tx.commit();
+		tx.commit();
 		
 	}
 
