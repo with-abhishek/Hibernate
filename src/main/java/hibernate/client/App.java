@@ -24,17 +24,22 @@ public class App {
 		
 //		String hql ="from Employee where id=1";
 //		Query q = ss.createQuery(hql);
-//		
 //		List list = q.list();	
 //		System.out.println(list);
 		
 //		Pagination 
 		
+//		String hql ="from Employee";
+//		Query q = ss.createQuery(hql);
+//		q.setFirstResult(1);
+//		q.setMaxResults(10);
+//		List list = q.list();	
+//		System.out.println(list);
+		
+//		From Clause
+		
 		String hql ="from Employee";
 		Query q = ss.createQuery(hql);
-		q.setFirstResult(1);
-		q.setMaxResults(10);
-		
 		List list = q.list();	
 		System.out.println(list);
 		
