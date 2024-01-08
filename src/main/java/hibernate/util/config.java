@@ -25,6 +25,7 @@ public class config {
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(ps).build();
 		// Create a MetadataSources and add annotated entity classes
 		MetadataSources metadataSources = new MetadataSources(ssr).addAnnotatedClass(hibernate.entity.Employee.class);
+		metadataSources= metadataSources.addAnnotatedClass(hibernate.entity.Address.class);
 		Metadata meta = metadataSources.buildMetadata();
 		// Create a SessionFactory
 		SessionFactory sessionFactory = meta.buildSessionFactory();

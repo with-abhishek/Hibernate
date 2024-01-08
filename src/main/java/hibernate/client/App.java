@@ -1,4 +1,5 @@
 package hibernate.client;
+import hibernate.entity.Address;
 import hibernate.entity.Employee;
 import hibernate.util.config;
 
@@ -7,38 +8,34 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 public class App {
 
 	public static void main(String[] args) {
 		
-		Employee emp = new Employee();
-	
-		
 		SessionFactory sf = config.getSessionFactory();
 		Session ss = sf.openSession();
 		Transaction tx = ss.beginTransaction();
 		
+		Employee emp = new Employee();
 		
-		List<Employee> employees= ss.createNamedQuery("Employee.findEmployeeById",Employee.class)
-				.setParameter("id", 5)
-				.getResultList();
-		for (Employee employee : employees) {
-			System.out.println("Emp: "+employee);
-		}
-		System.out.println("---------------------------------------------------");
+		emp.setName("Sumit");
+		emp.setGender("male");
+		emp.setSalary(12000);
+		Address add = new Address("Noida","UP",201301);
+//		Address add = new Address();
+//		add.setCity("GZB");
+//		add.setState("UP");
+//		add.setPin_code(201201);
+//		
+		emp.setAdd(add);
 		
-		List<Employee> em= ss.createNamedQuery("Employee.findByGender",Employee.class)
-				.setParameter("gender", "male").getResultList();
-
-		for (Employee employee : em) {
-			System.out.println("Emp: "+employee);
-		}
+		
+		ss.persist(add);
+		ss.persist(emp);
+		
 		tx.commit();
-		ss.close();
-		sf.close();
-		
+	
 	}
-
-}
+	}

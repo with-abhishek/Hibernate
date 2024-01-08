@@ -4,20 +4,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.NamedQuery;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 
-@Entity (name="employee")
+@Entity 
+@Table(name="HCL_emp")
 @Data
 
-@NamedQuery(
-		name = "Employee.findEmployeeById", 
-		query = "from employee E WHERE E.id > :id"
-		)
-@NamedQuery(
-	    name = "Employee.findByGender",
-	    query = "SELECT e FROM employee e WHERE e.gender = :gender"
-	)
+
 public class Employee {
 
 	@Id
@@ -27,6 +22,11 @@ public class Employee {
 	private String gender;
 
 	private int salary;
+	
+	@OneToOne
+	private Address add;
+	
+	
 	
 
 	
