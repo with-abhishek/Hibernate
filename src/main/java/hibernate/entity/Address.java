@@ -50,6 +50,12 @@ public class Address {
 	public void setPin_code(int pin_code) {
 		this.pin_code = pin_code;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", city=" + city + ", state=" + state + ", pin_code=" + pin_code + "]";
+	}
 	
 	
 }
