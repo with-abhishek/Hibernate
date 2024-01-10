@@ -16,42 +16,49 @@ public class App {
 
 		SessionFactory sf = config.getSessionFactory();
 		Session ss = sf.openSession();
-		Transaction tx = ss.beginTransaction();
-
-//		
-		fectAllData(ss);
+//		Transaction tx = ss.beginTransaction();
 //		save(ss);
+//		fetchDataFromEmployee(ss);
+		fetchDataFromAddress(ss);
 
 	}
 
-	public static void save(Session ss) {
+	private static void fetchDataFromEmployee(Session ss) {
 
+		List<Employee> emp = ss.createQuery("From Employee", Employee.class).getResultList();
+		System.out.println("..........Employee data...........");
+		for (Employee employee : emp) {
+			System.out.println(employee);
+		}
+		System.out.println(emp.get(1).getAdd());
+	}
+
+	private static void fetchDataFromAddress(Session ss) {
+
+		List<Address> Add = ss.createQuery("From Address", Address.class).getResultList();
+		System.out.println("..........Employee data...........");
+		for (Address Address : Add) {
+			System.out.println(Address);
+		}
+	}
+
+	public static void save(Session ss) {
+		Transaction tx = ss.beginTransaction();
 		Employee emp = new Employee();
 
-		emp.setName("Arpit");
+		emp.setName("Hari");
 		emp.setGender("male");
-		emp.setSalary(164251);
-		Address add = new Address("JNP", "UP", 201301);
+		emp.setSalary(21356);
+		Address add = new Address("LKO", "UP", 222601);
 //		Address add = new Address();
 //		add.setCity("GZB");
 //		add.setState("UP");
 //		add.setPin_code(201201);
-//		
-//		emp.setAdd(add);
-//		
-//		
+		add.setEmployee(emp);
+		emp.setAdd(add);
 //		ss.persist(add);
-//		ss.persist(emp);
-//		
-//		tx.commit();
-	}
+		ss.persist(emp);
+		tx.commit();
 
-	public static void fectAllData(Session ss) {
-		System.out.println("............Data Fetching............");
-		List<Employee> Emp = ss.createQuery("From Employee", Employee.class).getResultList();
-
-		for (Employee E : Emp) {
-			System.out.println(E);
-		}
 	}
 }
