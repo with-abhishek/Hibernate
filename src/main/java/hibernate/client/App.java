@@ -17,11 +17,9 @@ public class App {
 
 		SessionFactory sf = config.getSessionFactory();
 		Session ss = sf.openSession();
-		Transaction tx = ss.beginTransaction();
 
-//		
-//		fectAllData(ss);
-		save(ss);
+		fetchEmployeeData(ss);
+//		save(ss);
 
 	}
 
@@ -39,26 +37,20 @@ public class App {
 		ll.add(add1);
 		ll.add(add2);
 		
-//		Address add = new Address();
-//		add.setCity("GZB");
-//		add.setState("UP");
-//		add.setPin_code(201201);
-//		
-		emp.setAddress(ll);
+		emp.setAddresses(ll);
 		
 		
-//		ss.persist(add);
+//		ss.persist(ll);
 		ss.persist(emp);
-		
 		tx.commit();
 	}
 
-	private static void fectAllData(Session ss) {
+	private static void fetchEmployeeData(Session ss) {
 		System.out.println("............Employee Data Fetching............");
 		List<Employee> Emp = ss.createQuery("From Employee", Employee.class).getResultList();
 
-		for (Employee E : Emp) {
-			System.out.println(E);
+		for (Employee employee : Emp) {
+			System.out.println(employee);
 		}
 		System.out.println("...........Employee Data End........");
 	}
