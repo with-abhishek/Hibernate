@@ -18,8 +18,8 @@ public class App {
 		SessionFactory sf = config.getSessionFactory();
 		Session ss = sf.openSession();
 
-		fetchEmployeeData(ss);
-//		save(ss);
+//		fetchEmployeeData(ss);
+		save(ss);
 
 	}
 
@@ -33,9 +33,19 @@ public class App {
 		emp.setSalary(164251);
 		Address add1 = new Address("JNP", "UP", 201301);
 		Address add2 = new Address("BSB", "UP", 221211);
-		
+		Address add3 = new Address("LKO", "UP", 221211);
+		Address add4 = new Address("AZM", "UP", 221211);	
 		ll.add(add1);
 		ll.add(add2);
+		ll.add(add3);
+		ll.add(add4);
+		
+		add1.setEmployee(emp);
+		add2.setEmployee(emp);
+		add3.setEmployee(emp);
+		add4.setEmployee(emp);
+		
+		
 		
 		emp.setAddresses(ll);
 		
