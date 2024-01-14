@@ -24,34 +24,44 @@ public class App {
 	}
 
 	private static void save(Session ss) {
-		Transaction tx= ss.beginTransaction();
-		Employee emp = new Employee();
-		List<Address> ll= new LinkedList<>();
+		Transaction tx = ss.beginTransaction();
 
-		emp.setName("Arpit");
-		emp.setGender("male");
-		emp.setSalary(164251);
-		Address add1 = new Address("JNP", "UP", 201301);
-		Address add2 = new Address("BSB", "UP", 221211);
-		Address add3 = new Address("LKO", "UP", 221211);
-		Address add4 = new Address("AZM", "UP", 221211);	
+		List<Employee> el = new LinkedList<>();
+		List<Address> ll = new LinkedList<>();
+		Employee em1 = new Employee("Aman", "male", 12021);
+		Employee em2 = new Employee("suresh", "male", 12312);
+		Employee em3 = new Employee("Gagan", "male", 20001);
+		Employee em4 = new Employee("Vimal", "male", 10000);
+
+		Address add1 = new Address("JNP", "UP", 201305);
+		Address add2 = new Address("BSB", "UP", 226013);
+		Address add3 = new Address("LKO", "UP", 221101);
+		Address add4 = new Address("AZM", "UP", 276127);
+		el.add(em1);
+		el.add(em2);
+		el.add(em3);
+		el.add(em4);
+
 		ll.add(add1);
 		ll.add(add2);
 		ll.add(add3);
 		ll.add(add4);
 		
-		add1.setEmployee(emp);
-		add2.setEmployee(emp);
-		add3.setEmployee(emp);
-		add4.setEmployee(emp);
+		add1.setEmployee(el);
+		add2.setEmployee(el);
+		add4.setEmployee(el);
+		add4.setEmployee(el);
+		
+		em1.setAddresses(ll);
+		em2.setAddresses(ll);
+		em3.setAddresses(ll);
+		em4.setAddresses(ll);
 		
 		
-		
-		emp.setAddresses(ll);
-		
-		
-//		ss.persist(ll);
-		ss.persist(emp);
+		ss.persist(em1);
+		ss.persist(em2);
+		ss.persist(em3);
+		ss.persist(em4);
 		tx.commit();
 	}
 
